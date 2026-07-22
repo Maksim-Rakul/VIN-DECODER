@@ -1,0 +1,12 @@
+.decodeItem {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    flex-basis: calc((100% - 15px) / 2);
+    max-width: 165px;
+}
+
+.decodeValue {
+    font-size: 16px;
+    margin-bottom: 10px;
+}

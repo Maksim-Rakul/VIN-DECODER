@@ -1,5 +1,7 @@
+import css from "./Error.module.css";
+
 const Error = () => {
-  return <p>Ooops, some error</p>;
+  return <p className={css.error}>Ooops, some error</p>;
 };
 
 export default Error;

@@ -1,0 +1,27 @@
+.header {
+    padding: 20px 0;
+}
+
+.headerList {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.headerLink {
+    border-radius: 8px;
+    padding: 8px 16px;
+    height: 40px;
+    background-color: #4e75ff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    transition: background-color 250ms ease-in-out;
+}
+
+.headerLink:hover {
+    background-color: #6c8cff;
+}

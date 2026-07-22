@@ -1,12 +1,20 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import css from "./Header.module.css";
+import MyButton from "../UI/MyButton/MyButton";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
-    <header>
-      <nav>
-        <ul>
-          <Link to="/">Home</Link>
-          <Link to="/variables">Variables</Link>
+    <header className={`${css.header} container`}>
+      <nav className={css.headerNav}>
+        <ul className={css.headerList}>
+          <li>
+            <MyButton text="Home" onClick={() => navigate("/")} />
+          </li>
+          <li>
+            <MyButton text="Variables" onClick={() => navigate("/variables")} />
+          </li>
         </ul>
       </nav>
     </header>

@@ -1,3 +1,6 @@
+import MyButton from "../../../../components/UI/MyButton/MyButton";
+import css from "./DecodeForm.module.css";
+
 interface DecodeFormProps {
   onSubmit: (vin: string) => void;
 }
@@ -12,12 +15,15 @@ const DecodeForm = ({ onSubmit }: DecodeFormProps) => {
   };
 
   return (
-    <div>
-      <form action={handleSubmit}>
-        <input type="text" name="vin" />
-        <button type="submit">Decode</button>
-      </form>
-    </div>
+    <form action={handleSubmit} className={css.form}>
+      <input
+        className={css.input}
+        type="text"
+        name="vin"
+        placeholder="Enter your VIN code"
+      />
+      <MyButton text="Decode" />
+    </form>
   );
 };
 

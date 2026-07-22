@@ -1,24 +1,17 @@
-import { useEffect, useState } from "react";
 import { getVariables } from "../../services/vinApi";
-import type { Variable } from "../../types/variables";
 import VariableList from "./components/VariableList/VariableList";
+import { useFetch } from "../../hooks/useFetch";
+import Loader from "../../components/UI/Loader/Loader";
+import Error from "../../components/UI/Error/Error";
 
 const Variables = () => {
-  const [variablesList, setVariablesList] = useState<Variable[]>([]);
-
-  useEffect(() => {
-    const fetch = async () => {
-      const res = await getVariables();
-
-      setVariablesList(res.Results);
-    };
-
-    fetch();
-  }, []);
+  const { isLoading, isError, data } = useFetch(getVariables);
 
   return (
     <div>
-      <VariableList variableList={variablesList} />
+      {isLoading && <Loader />}
+      {isError && <Error />}
+      {data?.Results && <VariableList variableList={data?.Results} />}
     </div>
   );
 };

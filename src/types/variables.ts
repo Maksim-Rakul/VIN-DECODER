@@ -3,3 +3,9 @@ export interface Variable {
     Description: string;
     Name: string
 }
+
+export interface VariableById {
+    ElementName: string;
+    Id: number;
+    Name: string
+}

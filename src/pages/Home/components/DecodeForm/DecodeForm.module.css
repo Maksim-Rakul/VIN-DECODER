@@ -1,0 +1,22 @@
+.form {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.input {
+    border: 1px solid #808080;
+    border-radius: 4px;
+    padding: 8px 16px;
+    flex-grow: 1;
+    outline: none;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+}
+
+.input:focus {
+    border: 1px solid #000;
+    border-radius: 4px;
+}

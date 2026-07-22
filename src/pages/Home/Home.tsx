@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { decodeVin } from "../../services/vinApi";
 import DecodeForm from "./components/DecodeForm/DecodeForm";
 import type { Vin } from "../../types/vin";
@@ -9,9 +9,20 @@ import Error from "../../components/UI/Error/Error";
 
 const Home = () => {
   const [decodingVins, setDecodingVins] = useState<Vin[]>([]);
-  const [lastThree, setLastThree] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [lastThree, setLastThree] = useState<string[]>(() => {
+    const list = localStorage.getItem("lastList");
+
+    if (!list) return [];
+
+    const parsed = JSON.parse(list);
+    return Array.isArray(parsed) ? parsed : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("lastList", JSON.stringify(lastThree));
+  }, [lastThree]);
 
   const handleSubmit = async (vin: string) => {
     setIsLoading(true);
@@ -19,12 +30,12 @@ const Home = () => {
     try {
       const res = await decodeVin(vin);
 
-      setLastThree([vin, ...lastThree]);
+      setLastThree([vin, ...lastThree].slice(0, 3));
+
       const filteredVins = res.Results.filter((vin) => !!vin.Value);
 
       setDecodingVins(filteredVins);
-    } catch (error) {
-      console.log(error);
+    } catch {
       setIsError(true);
     } finally {
       setIsLoading(false);
@@ -32,9 +43,9 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className={`container`}>
       <DecodeForm onSubmit={handleSubmit} />
-      <LastVinsList lastVins={lastThree.slice(0, 3)} />
+      <LastVinsList lastVins={lastThree} />
       {isLoading && <Loader />}
       {isError && <Error />}
       <DecodeList decodeList={decodingVins} />
