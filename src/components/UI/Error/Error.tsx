@@ -1,6 +1,14 @@
 import css from "./Error.module.css";
 
-const Error = () => {
+interface ErrorProps {
+  message?: string;
+}
+
+const Error = ({ message }: ErrorProps) => {
+  if (message) {
+    return <p className={css.error}>{message}</p>;
+  }
+
   return <p className={css.error}>Ooops, some error</p>;
 };
 

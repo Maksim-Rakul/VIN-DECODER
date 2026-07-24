@@ -1,12 +1,16 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 .container {
     width: 375px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
-}
+
 
 body {
     margin: 0;
@@ -27,8 +31,21 @@ ul, ol {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
 
 button {
     cursor: pointer;
+}
+
+@media screen and (min-width: 767px) {
+    .container {
+        width: 768px;
+    }
+}
+
+@media screen and (min-width: 1279px) {
+    .container {
+        width: 1280px;
+    }
 }

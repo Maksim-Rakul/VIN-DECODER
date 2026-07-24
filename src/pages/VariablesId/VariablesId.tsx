@@ -3,24 +3,22 @@ import { getVariablesByID } from "../../services/vinApi";
 import Loader from "../../components/UI/Loader/Loader";
 import Error from "../../components/UI/Error/Error";
 import { useFetchWithParams } from "../../hooks/useFetchWithParams";
+import css from "./VariablesId.module.css";
 
 const VariablesId = () => {
   const { id } = useParams();
 
-  const { isLoading, isError, data } = useFetchWithParams(
-    getVariablesByID,
-    Number(id),
-  );
+  const { isLoading, data } = useFetchWithParams(getVariablesByID, Number(id));
 
-  if (isError) return <Error />;
+  if (isLoading) return <Loader />;
 
   return (
-    <div>
-      {isLoading ? (
-        <Loader />
+    <div className="container">
+      {!data ? (
+        <Error message="Not found" />
       ) : (
-        <div>
-          <p>Element name: {data?.ElementName}</p>
+        <div className={css.wrap}>
+          <h3 className={css.name}>Element name: {data?.ElementName}</h3>
           <p>Name: {data?.Name}</p>
         </div>
       )}

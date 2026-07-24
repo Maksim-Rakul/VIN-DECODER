@@ -1,0 +1,22 @@
+.variableItem {
+    background-color: rgb(228, 228, 228);
+    padding: 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: box-shadow 250ms ease-in-out;
+}
+
+.variableItem:hover {
+    box-shadow: 2px 2px 10px;
+}
+
+.subTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-width: 1279px) {
+    .variableItem {
+        flex-basis: calc((100% - 20px * 2) / 3);
+    }
+}

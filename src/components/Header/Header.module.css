@@ -25,3 +25,9 @@
 .headerLink:hover {
     background-color: #6c8cff;
 }
+
+@media screen and (min-width: 767px) {
+    .headerList {
+        gap: 30px;
+    }
+}

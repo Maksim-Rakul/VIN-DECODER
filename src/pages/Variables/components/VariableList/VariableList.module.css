@@ -1,0 +1,13 @@
+.variableList {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@media screen and (min-width: 1279px) {
+    .variableList {
+        gap: 20px;
+        flex-direction: row;
+    }
+}

@@ -8,7 +8,7 @@ const Variables = () => {
   const { isLoading, isError, data } = useFetch(getVariables);
 
   return (
-    <div>
+    <div className="container">
       {isLoading && <Loader />}
       {isError && <Error />}
       {data?.Results && <VariableList variableList={data?.Results} />}

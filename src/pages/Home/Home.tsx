@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { decodeVin } from "../../services/vinApi";
-import DecodeForm from "./components/DecodeForm/DecodeForm";
 import type { Vin } from "../../types/vin";
+import css from "./Home.module.css";
+
+import DecodeForm from "./components/DecodeForm/DecodeForm";
 import DecodeList from "./components/DecodeList/DecodeList";
 import LastVinsList from "./components/LastVinsList/LastVinsList";
 import Loader from "../../components/UI/Loader/Loader";
@@ -44,11 +46,14 @@ const Home = () => {
 
   return (
     <div className={`container`}>
-      <DecodeForm onSubmit={handleSubmit} />
-      <LastVinsList lastVins={lastThree} />
+      <div className={css.topWrap}>
+        <DecodeForm onSubmit={handleSubmit} />
+        {lastThree.length > 0 && <LastVinsList lastVins={lastThree} />}
+      </div>
+
       {isLoading && <Loader />}
       {isError && <Error />}
-      <DecodeList decodeList={decodingVins} />
+      {decodingVins.length > 0 && <DecodeList decodeList={decodingVins} />}
     </div>
   );
 };

@@ -4,3 +4,9 @@
     gap: 10px;
     margin-bottom: 30px;
 }
+
+@media screen and (min-width: 1279px) {
+    .lastList {
+        width: 400px;
+    }
+}
